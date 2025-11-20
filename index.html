@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurusan Desain Komunikasi Visual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1A73E8;
+            --neon-blue: #4DA3FF;
+            --dark-bg: #0A0A0A;
+            --white: #FFFFFF;
+            --light-gray: #E5E5E5;
+            --dark-blue: #0F1B32;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            border-bottom: 1px solid rgba(77, 163, 255, 0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(26, 115, 232, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 10%;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(77, 163, 255, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(26, 115, 232, 0.4);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(26, 115, 232, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--white);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--dark-bg);
+        }
+
+        /* Tentang Section */
+        #tentang {
+            background: var(--white);
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+            margin-bottom: 3rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Konsentrasi Section */
+        #konsentrasi {
+            background: var(--dark-bg);
+            padding: 5rem 5%;
+        }
+
+        #konsentrasi .section-title {
+            color: var(--white);
+        }
+
+        .konsentrasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .konsentrasi-card {
+            background: var(--dark-bg);
+            border: 1px solid var(--neon-blue);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .konsentrasi-card:hover {
+            box-shadow: 0 0 30px rgba(77, 163, 255, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .konsentrasi-card h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .konsentrasi-card p {
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Fasilitas Section */
+        #fasilitas {
+            background: var(--white);
+            padding: 5rem 5%;
+        }
+
+        #fasilitas .section-title {
+            color: var(--dark-bg);
+        }
+
+        .fasilitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .fasilitas-item {
+            position: relative;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .fasilitas-item::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--neon-blue) 100%);
+            opacity: 0.7;
+        }
+
+        .fasilitas-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transform: translateY(60%);
+            transition: transform 0.3s;
+        }
+
+        .fasilitas-item:hover .fasilitas-content {
+            transform: translateY(0);
+        }
+
+        .fasilitas-content h3 {
+            color: var(--dark-bg);
+            margin-bottom: 0.5rem;
+        }
+
+        .fasilitas-content p {
+            color: #666;
+        }
+
+        /* Kurikulum Section */
+        #kurikulum {
+            background: var(--dark-bg);
+            padding: 5rem 5%;
+        }
+
+        #kurikulum .section-title {
+            color: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--neon-blue);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            box-shadow: 0 5px 20px rgba(77, 163, 255, 0.2);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            color: #666;
+        }
+
+        .timeline-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+
+        /* Dosen Section */
+        #dosen {
+            background: var(--white);
+            padding: 5rem 5%;
+        }
+
+        #dosen .section-title {
+            color: var(--dark-bg);
+        }
+
+        .dosen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dosen-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .dosen-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .dosen-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-blue);
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--neon-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .dosen-card h3 {
+            color: var(--dark-bg);
+            margin-bottom: 0.5rem;
+        }
+
+        .dosen-card .keahlian {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .dosen-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Prestasi Section */
+        #prestasi {
+            background: var(--dark-blue);
+            padding: 5rem 5%;
+        }
+
+        #prestasi .section-title {
+            color: var(--white);
+        }
+
+        .prestasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .prestasi-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .prestasi-card:hover {
+            transform: scale(1.05);
+        }
+
+        .prestasi-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .prestasi-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Galeri Section */
+        #galeri {
+            background: var(--white);
+            padding: 5rem 5%;
+        }
+
+        #galeri .section-title {
+            color: var(--dark-bg);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .galeri-item {
+            position: relative;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary-blue), var(--neon-blue));
+        }
+
+        .galeri-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .galeri-item:hover .galeri-overlay {
+            opacity: 1;
+        }
+
+        .galeri-overlay h4 {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Pendaftaran Section */
+        #pendaftaran {
+            background: var(--dark-bg);
+            padding: 5rem 5%;
+        }
+
+        #pendaftaran .section-title {
+            color: var(--white);
+        }
+
+        .pendaftaran-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .pendaftaran-info {
+            color: var(--light-gray);
+        }
+
+        .pendaftaran-info h3 {
+            color: var(--white);
+            margin: 2rem 0 1rem;
+        }
+
+        .pendaftaran-info ul {
+            list-style: none;
+        }
+
+        .pendaftaran-info li {
+            padding: 0.7rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pendaftaran-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .pendaftaran-cta {
+            text-align: center;
+        }
+
+        .pendaftaran-cta .btn-primary {
+            font-size: 1.2rem;
+            padding: 1.5rem 3rem;
+        }
+
+        /* Testimoni Section */
+        #testimoni {
+            background: var(--white);
+            padding: 5rem 5%;
+        }
+
+        #testimoni .section-title {
+            color: var(--dark-bg);
+        }
+
+        .testimoni-carousel {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .testimoni-item {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
+
+        .testimoni-item.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .testimoni-text {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .testimoni-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--neon-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            color: var(--dark-bg);
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary-blue);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* Kontak Section */
+        #kontak {
+            background: var(--dark-bg);
+            padding: 5rem 5%;
+        }
+
+        #kontak .section-title {
+            color: var(--white);
+        }
+
+        .kontak-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .kontak-info {
+            color: var(--light-gray);
+        }
+
+        .kontak-item {
+            margin-bottom: 2rem;
+        }
+
+        .kontak-item h3 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .kontak-item a {
+            color: var(--neon-blue);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            color: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-blue);
+            color: var(--white);
+        }
+
+        .kontak-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(77, 163, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--white);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-bg);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--light-gray);
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(77, 163, 255, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            padding: 0.5rem 0;
+        }
+
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--neon-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(77, 163, 255, 0.2);
+            color: var(--light-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                padding: 2rem;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 2rem !important;
+            }
+
+            .pendaftaran-container,
+            .kontak-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-outline {
+                width: 100%;
+            }
+        }
+
+        /* Container dasar */
+#galeri {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #0A0A0A;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #1A73E8;
+    color: #1A73E8;
+    padding: 10px 22px;
+    margin: 5px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #1A73E8;
+    color: white;
+}
+
+/* Galeri Grid */
+.galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Item gambar */
+.galeri-item {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.galeri-item:hover {
+    transform: scale(1.03);
+}
+
+/* Overlay */
+.galeri-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.galeri-item:hover .galeri-overlay {
+    opacity: 1;
+}
+
+.galeri-overlay h4 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* Animasi filter (hide/show) */
+.galeri-item.hide {
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">DKV</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#tentang" onclick="closeMenu()">Tentang</a></li>
+                <li><a href="#konsentrasi" onclick="closeMenu()">Konsentrasi</a></li>
+                <li><a href="#fasilitas" onclick="closeMenu()">Fasilitas</a></li>
+                <li><a href="#kurikulum" onclick="closeMenu()">Kurikulum</a></li>
+                <li><a href="#dosen" onclick="closeMenu()">Dosen</a></li>
+                <li><a href="#galeri" onclick="closeMenu()">Galeri</a></li>
+                <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Desain Komunikasi Visual</h1>
+            <p>Wujudkan kreativitasmu dalam dunia desain. Bergabunglah dengan jurusan DKV dan jadilah desainer profesional yang siap menghadapi tantangan industri kreatif.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="scrollToSection('pendaftaran')">Daftar Sekarang</button>
+                <button class="btn-outline" onclick="scrollToSection('tentang')">Info Lengkap</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang DKV -->
+    <section id="tentang">
+        <div class="container">
+            <h2 class="section-title">Tentang Jurusan DKV</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Pengertian DKV</h3>
+                    <p>Desain Komunikasi Visual adalah ilmu yang mempelajari konsep komunikasi dan ungkapan kreatif melalui berbagai media untuk menyampaikan pesan dan gagasan secara visual.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Visi & Misi</h3>
+                    <p>Menjadi program studi terdepan dalam menghasilkan desainer komunikasi visual yang kreatif, profesional, dan berkarakter, serta mampu bersaing di tingkat nasional dan internasional.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Keunggulan</h3>
+                    <p>Kurikulum berbasis industri, fasilitas lengkap dan modern, dosen berpengalaman, kerjasama dengan berbagai perusahaan kreatif, dan program magang terstruktur.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Prospek Karier</h3>
+                    <p>Graphic Designer, UI/UX Designer, Brand Consultant, Illustrator, Motion Graphic Artist, Creative Director, Content Creator, Art Director, dan berbagai profesi kreatif lainnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Konsentrasi -->
+    <section id="konsentrasi">
+        <div class="container">
+            <h2 class="section-title">Konsentrasi Bidang Studi</h2>
+            <div class="konsentrasi-grid">
+                <div class="konsentrasi-card">
+                    <div class="icon">🎨</div>
+                    <h3>Branding & Visual Identity</h3>
+                    <p>Mempelajari pembuatan identitas visual brand, logo design, brand guidelines, dan strategi komunikasi visual untuk membangun citra perusahaan yang kuat.</p>
+                </div>
+                <div class="konsentrasi-card">
+                    <div class="icon">✏️</div>
+                    <h3>Illustration & Digital Art</h3>
+                    <p>Fokus pada teknik ilustrasi digital, character design, concept art, dan berbagai gaya ilustrasi untuk media cetak maupun digital.</p>
+                </div>
+                <div class="konsentrasi-card">
+                    <div class="icon">📱</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Mempelajari desain antarmuka pengguna, pengalaman pengguna, prototyping, dan user research untuk menciptakan produk digital yang user-friendly.</p>
+                </div>
+                <div class="konsentrasi-card">
+                    <div class="icon">📸</div>
+                    <h3>Photography & Videography</h3>
+                    <p>Mendalami teknik fotografi komersial, product photography, videography, video editing, dan storytelling visual melalui media foto dan video.</p>
+                </div>
+                <div class="konsentrasi-card">
+                    <div class="icon">🎬</div>
+                    <h3>Motion Graphic & Animation</h3>
+                    <p>Mempelajari animasi 2D/3D, motion design, visual effects, kinetic typography, dan berbagai teknik animasi untuk media digital.</p>
+                </div>
+                <div class="konsentrasi-card">
+                    <div class="icon">💡</div>
+                    <h3>Creative Advertising</h3>
+                    <p>Fokus pada konsep kreatif periklanan, copywriting, kampanye iklan integrated, dan strategi komunikasi pemasaran yang efektif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fasilitas -->
+    <section id="fasilitas">
+        <div class="container">
+            <h2 class="section-title">Fasilitas Jurusan</h2>
+            <div class="fasilitas-grid">
+                <div class="fasilitas-item">
+                    <img src="https://smkn1klk.sch.id/wp-content/uploads/2022/12/alat-studio.jpg" alt="" width="500px">
+                    <div class="fasilitas-content">
+                        <h3>🎨 Studio DKV</h3>
+                        <p>Studio desain lengkap dengan meja gambar, lighting profesional, dan ruang kerja yang nyaman untuk mengembangkan kreativitas mahasiswa.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLO0kP3jXL8eRi1_N6dqppJ4xtYsfYC8Xg-A&s" alt="" width="450px">
+                    <div class="fasilitas-content" >
+                        <h3>💻 Lab Komputer</h3>
+                        <p>Laboratorium komputer dengan spesifikasi tinggi, software desain terkini seperti Adobe Creative Suite, dan koneksi internet cepat.</p>
+                    </div>
+                </div>
+                <div class="fasilitas-item">
+                    <img src="https://www.darmajaya.ac.id/wp-content/uploads/IIB_0322-scaled.jpg" alt="" width="500px">
+                    <div class="fasilitas-content">
+                        <h3>📷 Ruang Foto</h3>
+                        <p>Studio fotografi dengan pencahayaan profesional, backdrop beragam, dan peralatan fotografi lengkap untuk praktikum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kurikulum -->
+    <section id="kurikulum">
+        <div class="container">
+            <h2 class="section-title">Kurikulum</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Semester 1-2: Dasar Desain</h3>
+                        <ul>
+                            <li>Nirmana Dwimatra & Trimatra</li>
+                            <li>Gambar Bentuk</li>
+                            <li>Tipografi Dasar</li>
+                            <li>Fotografi Dasar</li>
+                            <li>Sejarah Seni Rupa</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Semester 3-4: Pengembangan Skill</h3>
+                        <ul>
+                            <li>Desain Grafis Lanjut</li>
+                            <li>Ilustrasi Digital</li>
+                            <li>Videografi & Editing</li>
+                            <li>Web Design</li>
+                            <li>Brand Identity Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Semester 5-6: Spesialisasi</h3>
+                        <ul>
+                            <li>Motion Graphic</li>
+                            <li>UI/UX Design</li>
+                            <li>Advertising Campaign</li>
+                            <li>Portfolio Development</li>
+                            <li>Magang Industri</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Semester 7-8: Tugas Akhir</h3>
+                        <ul>
+                            <li>Metodologi Penelitian</li>
+                            <li>Tugas Akhir / Skripsi</li>
+                            <li>Pameran Karya</li>
+                            <li>Persiapan Karier</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Prestasi -->
+    <section id="prestasi">
+        <div class="container">
+            <h2 class="section-title">Prestasi & Penghargaan</h2>
+            <div class="prestasi-grid">
+                <div class="prestasi-card">
+                    <h3>🏆 Juara 1 National Design Competition 2024</h3>
+                    <p>Tim mahasiswa DKV meraih juara pertama dalam kompetisi desain tingkat nasional dengan karya brand identity yang inovatif.</p>
+                </div>
+                <div class="prestasi-card">
+                    <h3>🎨 Best Portfolio Award 2023</h3>
+                    <p>Mahasiswa DKV mendapat penghargaan portfolio terbaik dari Asosiasi Desainer Grafis Indonesia (ADGI).</p>
+                </div>
+                <div class="prestasi-card">
+                    <h3>🤝 Partnership dengan 50+ Industri</h3>
+                    <p>Kerjasama dengan berbagai perusahaan kreatif untuk program magang dan job placement mahasiswa.</p>
+                </div>
+                <div class="prestasi-card">
+                    <h3>🎬 International Animation Festival</h3>
+                    <p>Karya motion graphic mahasiswa berhasil masuk seleksi festival animasi internasional di Singapura.</p>
+                </div>
+                <div class="prestasi-card">
+                    <h3>📱 UI/UX Excellence Award</h3>
+                    <p>Tim mahasiswa memenangkan kompetisi UI/UX design dengan aplikasi mobile yang user-friendly dan inovatif.</p>
+                </div>
+                <div class="prestasi-card">
+                    <h3>🌟 Akreditasi A BAN-PT</h3>
+                    <p>Program studi DKV terakreditasi A dengan standar pendidikan berkualitas tinggi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Karya -->
+    <section id="galeri">
+        <div class="container">
+            <h2 class="section-title">Galeri siswa</h2>
+    
+            
+    
+            <div class="galeri-grid" id="galeriGrid">
+    
+                <!-- Contoh item dengan gambar -->
+                <div class="galeri-item" data-category="illustration" style="background-image: url('https://bandungbergerak.id/cdn/9/5/0/6/9506.JPG');">
+                    <div class="galeri-overlay">
+                        <h4>Digital Illustration</h4>
+                    </div>
+                </div>
+    
+                <div class="galeri-item" data-category="branding" style="background-image: url('https://binus.ac.id/wp-content/uploads/2015/03/r5.jpg');">
+                    <div class="galeri-overlay">
+                        <h4>Brand Identity</h4>
+                    </div>
+                </div>
+    
+                <div class="galeri-item" data-category="uiux" style="background-image: url('https://img.inews.co.id/media/620/files/inews_new/2021/12/15/desain_komunikasi_visual.jpg');">
+                    <div class="galeri-overlay">
+                        <h4>Mobile App Design</h4>
+                    </div>
+                </div>
+    
+                <div class="galeri-item" data-category="motion" style="background-image: url('https://idseducation.com/wp-content/uploads/2023/03/desain-komunikasi-visual-1024x576.jpg');">
+                    <div class="galeri-overlay">
+                        <h4>Motion Graphics</h4>
+                    </div>
+                </div>
+    
+    
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pendaftaran -->
+    <section id="pendaftaran">
+        <div class="container">
+            <h2 class="section-title">Informasi Pendaftaran</h2>
+            <div class="pendaftaran-container">
+                <div class="pendaftaran-info">
+                    <h3>Syarat Pendaftaran</h3>
+                    <ul>
+                        <li>Lulusan SMA/SMK/MA semua jurusan</li>
+                        <li>Memiliki minat dan bakat di bidang desain</li>
+                        <li>Melampirkan portfolio (nilai tambah)</li>
+                        <li>Lulus tes masuk jurusan</li>
+                        <li>Mengisi formulir pendaftaran online</li>
+                    </ul>
+
+                    <h3>Jadwal Pendaftaran</h3>
+                    <ul>
+                        <li>Gelombang 1: Januari - Maret 2025</li>
+                        <li>Gelombang 2: April - Juni 2025</li>
+                        <li>Gelombang 3: Juli - Agustus 2025</li>
+                    </ul>
+
+                    <h3>Alur Pendaftaran</h3>
+                    <ul>
+                        <li>Daftar online melalui website</li>
+                        <li>Upload dokumen persyaratan</li>
+                        <li>Tes masuk (tes gambar & wawancara)</li>
+                        <li>Pengumuman kelulusan</li>
+                        <li>Registrasi ulang</li>
+                    </ul>
+                </div>
+                <div class="pendaftaran-cta">
+                    <h3 style="color: var(--white); margin-bottom: 2rem;">Siap Menjadi Bagian dari Kami?</h3>
+                    <button class="btn-primary">Daftar Sekarang</button>
+                    <p style="margin-top: 2rem; font-size: 0.9rem;">Atau hubungi kami untuk informasi lebih lanjut</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section id="testimoni">
+        <div class="container">
+            <h2 class="section-title">Testimoni</h2>
+            <div class="testimoni-carousel">
+                <div class="testimoni-item active">
+                    <div class="quote-icon">"</div>
+                    <p class="testimoni-text">Program DKV memberikan saya fondasi yang kuat dalam dunia desain. Dosen-dosen yang berpengalaman dan fasilitas lengkap membuat proses belajar sangat menyenangkan dan efektif.</p>
+                    <div class="testimoni-author">
+                        <div class="author-photo">RA</div>
+                        <div class="author-info">
+                            <h4>Rina Astuti</h4>
+                            <p>Alumni 2022 - UI/UX Designer di Tokopedia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimoni-item">
+                    <div class="quote-icon">"</div>
+                    <p class="testimoni-text">Kurikulum yang up-to-date dengan kebutuhan industri membuat saya siap kerja setelah lulus. Sekarang saya bekerja di agency kreatif ternama dan sangat berterima kasih pada jurusan DKV.</p>
+                    <div class="testimoni-author">
+                        <div class="author-photo">DA</div>
+                        <div class="author-info">
+                            <h4>Dimas Aji</h4>
+                            <p>Alumni 2023 - Graphic Designer di Dentsu Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimoni-item">
+                    <div class="quote-icon">"</div>
+                    <p class="testimoni-text">Saya sangat menikmati perkuliahan di DKV. Banyak project-based learning yang melatih skill praktis, plus networking dengan profesional industri sangat membantu karier saya.</p>
+                    <div class="testimoni-author">
+                        <div class="author-photo">LP</div>
+                        <div class="author-info">
+                            <h4>Lisa Pratiwi</h4>
+                            <p>Mahasiswa Semester 6 - Freelance Illustrator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="showTestimoni(0)"></span>
+                <span class="dot" onclick="showTestimoni(1)"></span>
+                <span class="dot" onclick="showTestimoni(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak">
+        <div class="container">
+            <h2 class="section-title">Kontak Kami</h2>
+            <div class="kontak-container">
+                <div class="kontak-info">
+                    <div class="kontak-item">
+                        <h3>📧 Email</h3>
+                        <a href="mailto:info@dkv.ac.id">info@dkv.ac.id</a>
+                    </div>
+                    <div class="kontak-item">
+                        <h3>📱 Nomor Admin</h3>
+                        <a href="tel:+62812345678">+62 812-3456-7890</a>
+                    </div>
+                    <div class="kontak-item">
+                        <h3>📍 Lokasi </h3>
+                        <p>Jl. Pendidikan No. 123<br>YogyaKarta Depok Sleman<br>Indonesia 12345</p>
+                    </div>
+                    
+                </div>
+                <div class="kontak-form">
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" required placeholder="Masukkan nama Anda">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" required placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea required placeholder="Tulis pertanyaan Anda..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DKV</h3>
+                <p>Jurusan Desain Komunikasi Visual<br>Universitas Kreatif Indonesia</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#tentang">Tentang DKV</a></li>
+                    <li><a href="#konsentrasi">Konsentrasi</a></li>
+                    <li><a href="#fasilitas">Fasilitas</a></li>
+                    <li><a href="#kurikulum">Kurikulum</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Program</h3>
+                <ul>
+                    <li><a href="#dosen">Dosen</a></li>
+                    <li><a href="#prestasi">Prestasi</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#pendaftaran">Pendaftaran</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Hubungi Kami</h3>
+                <ul>
+                    <li><a href="mailto:info@dkv.ac.id">info@dkv.ac.id</a></li>
+                    <li><a href="tel:+62812345678">+62 812-3456-7890</a></li>
+                    <li><a href="#kontak">Formulir Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jurusan Desain Komunikasi Visual. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.remove('active');
+        }
+
+        // Smooth Scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const offset = 80;
+            const elementPosition = element.offsetTop - offset;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const offset = 80;
+                const elementPosition = target.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Gallery Filter
+        let currentFilter = 'all';
+
+        function filterGallery(category) {
+            currentFilter = category;
+            const items = document.querySelectorAll('.galeri-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Testimoni Carousel
+        let currentTestimoni = 0;
+
+        function showTestimoni(index) {
+            const items = document.querySelectorAll('.testimoni-item');
+            const dots = document.querySelectorAll('.dot');
+            
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === index) {
+                    dot.classList.add('active');
+                }
+            });
+            
+            currentTestimoni = index;
+        }
+
+        // Auto-rotate testimoni
+        setInterval(() => {
+            currentTestimoni = (currentTestimoni + 1) % 3;
+            showTestimoni(currentTestimoni);
+        }, 5000);
+
+        // Form Submit Handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+            event.target.reset();
+        }
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.about-card, .konsentrasi-card, .fasilitas-item, .dosen-card, .prestasi-card');
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
